@@ -1,0 +1,361 @@
+:root {
+	/* primary */
+	--Bright-Blue: hsl(220, 98%, 61%);
+	--Check-Background: linear-gradient(
+		145deg,
+		hsl(192, 100%, 67%),
+		hsl(280, 87%, 65%)
+	);
+	/* light theme */
+	--Very-Light-Gray: hsl(0, 0%, 98%);
+	--Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+	--Light-Grayish-Blue: hsl(233, 11%, 84%);
+	--Dark-Grayish-Blue: hsl(236, 9%, 61%);
+	--Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	font-family: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Josefin Sans", sans-serif;
+	margin: 0;
+	padding: 3rem 1.7rem 0;
+	font-weight: 400;
+	font-size: 18px;
+	height: 100vh;
+	background-image: url(../images/bg-mobile-light.jpg);
+	background-repeat: no-repeat;
+	background-position: top 0 center;
+	background-size: 100vw 200px, cover;
+	background-color: var(--Very-Light-Gray);
+}
+
+.todo-wrapper {
+	max-width: 500px;
+	margin: auto;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+h1 {
+	color: white;
+	text-transform: uppercase;
+	font-size: 1.8rem;
+	font-weight: 700;
+	letter-spacing: 8px;
+}
+
+label {
+	font-size: 14px;
+	position: absolute;
+	width: 90%;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	padding-left: 3.4rem;
+	left: 0;
+}
+
+.header > button {
+	width: 24px;
+	height: 24px;
+	background: 0;
+	border: 0;
+	background-image: url(../images/icon-moon.svg);
+	background-size: auto 100%;
+	cursor: pointer;
+}
+
+.new-task-creator {
+	margin-bottom: 1rem;
+}
+
+.new-task-creator > form {
+	display: flex;
+	position: relative;
+}
+
+/* button layout for default and hover */
+.button-wrap {
+	position: absolute;
+	top: 30%;
+	left: 20px;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--Light-Grayish-Blue);
+	/* padding: 1rem; */
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+}
+
+.button-wrap:hover {
+	background: var(--Check-Background);
+}
+
+.new-task-creator button {
+	/* position: absolute; */
+	/* z-index: 2; */
+	/* background: 0; */
+	border: 0;
+	border-radius: 50%;
+	width: 18px;
+	height: 18px;
+	background: white;
+}
+
+.new-task {
+	width: 100%;
+	height: 50px;
+	background: white;
+	border: 0;
+	border-radius: 5px;
+	color: inherit;
+	font-size: inherit;
+	outline: none;
+	/* transition: border-bottom 250ms ease-in; */
+	padding: 0.25em 0.25em 0.25em 3em;
+	z-index: 0;
+}
+
+.new-task::placeholder {
+	color: inherit;
+	font-size: 13px;
+	opacity: 0.4;
+}
+
+.tasks {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0px 5rem 23rem rgb(226 226 226);
+	margin-bottom: 1rem;
+}
+
+.task {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding: 1rem 1.5rem 1rem 1.1rem;
+}
+
+/* /grey lines */
+.task::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: -0.1em;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.1;
+}
+
+/* hiding the default checkbox */
+[type="checkbox"] {
+	opacity: 0;
+	position: absolute;
+}
+
+.checkbox-wrap {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: var(--Light-Grayish-Blue);
+	z-index: 0;
+	margin-right: 1rem;
+	order: -1;
+}
+
+.custom-checkbox {
+	position: absolute;
+	left: 18.9px;
+	top: 17px;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 2;
+}
+
+.checkbox-wrap:hover {
+	background: var(--Check-Background);
+}
+
+.task:hover .checkbox-wrap {
+	background: var(--Check-Background);
+}
+
+[type="checkbox"]:checked + .checkbox-wrap {
+	background: var(--Check-Background);
+}
+
+[type="checkbox"]:checked + .checkbox-wrap .custom-checkbox {
+	background-color: transparent;
+	background-image: url(../images/icon-check.svg);
+	background-repeat: no-repeat;
+	top: 21px;
+	left: 23px;
+	background-size: 10px 10px;
+}
+
+/* decreases opacity when clicked */
+[type="checkbox"]:checked ~ label {
+	opacity: 0.4;
+}
+
+.task label p {
+	position: absolute;
+}
+
+/* cross off */
+.task label p::after {
+	content: "";
+	position: absolute;
+	left: -0.1em;
+	right: 0;
+	top: 7px;
+	width: 104%;
+	height: 2px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: transform 300ms ease-in-out;
+}
+
+/* adds the cross after it's check the the label:after */
+[type="checkbox"]:checked ~ label p::after {
+	transform: scaleX(1);
+	transform-origin: left;
+}
+
+button.delete-task {
+	width: 15px;
+	height: 15px;
+	background-image: url(../images/icon-cross.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: auto;
+	cursor: pointer;
+	border: 0;
+	background-color: white;
+}
+
+/* mobile footer */
+.todo-footer.mobile {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	font-size: 15px;
+}
+
+.task-count {
+	color: var(--Dark-Grayish-Blue);
+	opacity: 0.7;
+}
+
+.btn.delete {
+	border: 0;
+	background: 0;
+	cursor: pointer;
+	font-size: 15px;
+	color: var(--Dark-Grayish-Blue);
+	opacity: 0.7;
+}
+
+.settings.mobile {
+	display: flex;
+	justify-content: center;
+	padding: 1rem;
+	background: white;
+	border-radius: 5px;
+	gap: 1.3rem;
+	margin-bottom: 2rem;
+}
+
+div.settings button {
+	background: 0;
+	border: 0;
+	color: var(--Dark-Grayish-Blue);
+	font-weight: 700;
+}
+
+div.settings button:hover {
+	color: var(--Bright-Blue);
+}
+
+/* /mobile footer */
+
+footer {
+	text-align: center;
+	color: var(--Dark-Grayish-Blue);
+}
+
+footer > p {
+	margin-bottom: 2rem;
+	font-size: 14px;
+}
+
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 650px) {
+	body {
+		background-image: url(../images/bg-desktop-light.jpg);
+		background-size: 100vw 14rem, cover;
+		padding: 4rem 1.7rem 0;
+	}
+
+	label {
+		font-size: 18px;
+	}
+
+	button.delete-task {
+		opacity: 0;
+	}
+
+	.settings.mobile {
+		width: 200px;
+		margin: auto;
+		margin-top: -3rem;
+		padding: 0;
+		margin-bottom: 4rem;
+		left: -12px;
+		position: relative;
+	}
+
+	.task:hover button.delete-task {
+		opacity: 1;
+	}
+
+	.settings button {
+		font-size: 15px;
+		opacity: 0.6;
+	}
+
+	div.settings button:active {
+		color: var(--Bright-Blue);
+	}
+
+	div.settings button:hover {
+		color: var(--Very-Dark-Grayish-Blue);
+		cursor: pointer;
+	}
+}

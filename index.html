@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <script src="js/script.js" defer></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>CPWD | Todo app</title>
+</head>
+<body class="">
+  <main>
+    <div class="todo-wrapper ">
+      <div class="header">
+      <h1>Todo</h1>
+      <button data-theme-changer onclick="toggleDark()" ></button>
+    </div>
+    <div class="todo-body">
+      <div class="new-task-creator">
+        <form action="" data-new-list-form>
+          <div class="button-wrap"><button class="btn create" aria-label="create a task"></button></div>
+          <input 
+          type="text" 
+          class="new-task" 
+          data-new-list-input
+          placeholder="Create a new todo..."    
+          aria-label="new task name">
+        </form>
+      </div>
+      <!-- /new-task-creator -->    
+      <div class="tasks">
+        <div class="task">
+            <input type="checkbox" id="task-1">
+            <div class="checkbox-wrap">
+              <span class="custom-checkbox"></span>
+            </div>
+            <label for="task-1">
+                <p>Jog around the pard 3x</p> 
+            </label>
+            
+            <button class="delete-task"></button>
+          </div>
+        <!-- /task-1 -->
+
+        <div class="task">
+            <input type="checkbox" id="task-2">
+            <div class="checkbox-wrap">
+              <span class="custom-checkbox"></span>
+            </div>
+            <label for="task-2">
+              <p>another task</p> 
+            </label>
+            <button class="delete-task"></button>
+        </div>
+        <!-- /task-2 -->
+
+        <div class="task">
+            <input type="checkbox" id="task-3">
+            <div class="checkbox-wrap">
+              <span class="custom-checkbox"></span>
+            </div>
+            <label for="task-3">
+              <p>Complete Todo App on Frontend Mentor</p> 
+            </label>
+            <button class="delete-task"></button>
+          </div>
+        <!-- /task-3 -->
+        <div class="todo-footer mobile">
+          <p class="task-count" data-list-count>3 items left</p>
+          <button class="btn delete">Clear Completed</button>
+        </div>
+
+        <div class="todo-footer desktop" style="display: none;">
+          <p class="task-count" data-list-count>3 items left</p>
+          <button class="btn delete">Clear Completed</button>
+          <div class="settings desktop">
+            <button class="btn all">All</button>
+            <button class="btn active">Active</button>
+            <button class="btn completed">Completed</button>
+          </div>
+        </div>
+      </div>
+      <div class="settings mobile">
+        <button class="btn all">All</button>
+        <button class="btn active">Active</button>
+        <button class="btn completed">Completed</button>
+      </div>
+      <!-- /todo-body -->
+    </div>
+    </div>
+
+  </main>
+  <footer>
+    <p>Drag and drop to reorder list</p>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Carlos Perez</a>.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+:root {
+	/* dark theme */
+	--Very-Dark-Blue: hsl(235, 21%, 11%);
+	--Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+	--Light-Grayish-Blue: hsl(234, 39%, 85%);
+	--Light-Grayish-Blue/*(hover)*/: hsl(236, 33%, 92%);
+	--Dark-Grayish-Blue: hsl(234, 11%, 52%);
+	--Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+	--Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+}
+
+.dark-theme {
+	background-image: url(../images/bg-mobile-dark.jpg);
+	background-color: var(--Very-Dark-Blue);
+}
+
+.dark-theme .header > button {
+	background-image: url(../images/icon-sun.svg);
+}
+
+.dark-theme .tasks,
+.dark-theme .settings.mobile,
+.dark-theme .new-task,
+.dark-theme .new-task-creator button,
+.dark-theme span {
+	background-color: hsl(237, 14%, 26%);
+	box-shadow: none;
+	color: var(--Light-Grayish-Blue);
+}
+
+.dark-theme .button-wrap,
+.dark-theme .checkbox-wrap {
+	background-color: hsl(234, 11%, 52%);
+}
+
+.dark-theme button.delete-task {
+	background-color: transparent;
+	filter: contrast(122%) brightness(2) grayscale(100%);
+}
+
+@media (min-width: 650px) {
+	.dark-theme {
+		background-image: url(../images/bg-desktop-dark.jpg);
+	}
+}
