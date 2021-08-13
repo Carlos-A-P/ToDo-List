@@ -38,6 +38,24 @@
 	filter: contrast(122%) brightness(2) grayscale(100%);
 }
 
+.dark-theme div.settings button {
+	opacity: 1;
+}
+
+.dark-theme div.settings button:hover {
+	color: hsl(236, 33%, 92%);
+}
+
+.dark-theme .btn.delete,
+.dark-theme .task-count {
+	opacity: 1;
+}
+
+.dark-theme .btn.delete:hover {
+	color: hsl(236, 33%, 92%);
+	opacity: 1;
+}
+
 @media (min-width: 650px) {
 	.dark-theme {
 		background-image: url(../images/bg-desktop-dark.jpg);
