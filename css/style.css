@@ -275,6 +275,10 @@ button.delete-task {
 	opacity: 0.7;
 }
 
+.btn.delete:hover {
+	color: var(--Very-Dark-Grayish-Blue);
+}
+
 .settings.mobile {
 	display: flex;
 	justify-content: center;
@@ -290,10 +294,12 @@ div.settings button {
 	border: 0;
 	color: var(--Dark-Grayish-Blue);
 	font-weight: 700;
+	opacity: 0.6;
 }
 
 div.settings button:hover {
-	color: var(--Bright-Blue);
+	color: var(--Very-Dark-Grayish-Blue);
+	cursor: pointer;
 }
 
 /* /mobile footer */
@@ -348,10 +354,6 @@ footer > p {
 	.settings button {
 		font-size: 15px;
 		opacity: 0.6;
-	}
-
-	div.settings button:active {
-		color: var(--Bright-Blue);
 	}
 
 	div.settings button:hover {
