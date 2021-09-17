@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
   <title>CPWD | Todo app</title>
 </head>
-<body class="">
+<body class="">`    
   <main>
     <div class="todo-wrapper ">
       <div class="header">
@@ -32,55 +32,58 @@
         </form>
       </div>
       <!-- /new-task-creator -->    
-      <div class="tasks">
-        <div class="task">
-            <input type="checkbox" id="task-1">
-            <div class="checkbox-wrap">
-              <span class="custom-checkbox"></span>
+      <div class="box-wrapper" >
+        <div class="tasks" data-tasks>
+          <div class="task">
+              <input type="checkbox" id="task-1">
+              <div class="checkbox-wrap">
+                <span class="custom-checkbox"></span>
+              </div>
+              <label for="task-1">
+                  <p>Jog around the park 3x</p> 
+              </label>
+              
+              <button class="delete-task" data-delete-task></button>
             </div>
-            <label for="task-1">
-                <p>Jog around the park 3x</p> 
-            </label>
-            
-            <button class="delete-task"></button>
-          </div>
-        <!-- /task-1 -->
+          <!-- /task-1 -->
 
-        <div class="task">
-            <input type="checkbox" id="task-2">
-            <div class="checkbox-wrap">
-              <span class="custom-checkbox"></span>
+          <div class="task">
+              <input type="checkbox" id="task-2">
+              <div class="checkbox-wrap">
+                <span class="custom-checkbox"></span>
+              </div>
+              <label for="task-2">
+                <p>another task</p> 
+              </label>
+              <button class="delete-task" data-delete-task></button>
+          </div>
+          <!-- /task-2 -->
+
+          <div class="task">
+              <input type="checkbox" id="task-3">
+              <div class="checkbox-wrap">
+                <span class="custom-checkbox"></span>
+              </div>
+              <label for="task-3">
+                <p>Complete Todo App on Frontend Mentor</p> 
+              </label>
+              <button class="delete-task" data-delete-task></button>
             </div>
-            <label for="task-2">
-              <p>another task</p> 
-            </label>
-            <button class="delete-task"></button>
+          <!-- /task-3 -->          
         </div>
-        <!-- /task-2 -->
 
-        <div class="task">
-            <input type="checkbox" id="task-3">
-            <div class="checkbox-wrap">
-              <span class="custom-checkbox"></span>
-            </div>
-            <label for="task-3">
-              <p>Complete Todo App on Frontend Mentor</p> 
-            </label>
-            <button class="delete-task"></button>
-          </div>
-        <!-- /task-3 -->
         <div class="todo-footer mobile">
           <p class="task-count" data-list-count>3 items left</p>
-          <button class="btn delete">Clear Completed</button>
+          <button class="btn delete" data-clear>Clear Completed</button>
         </div>
 
         <div class="todo-footer desktop" style="display: none;">
           <p class="task-count" data-list-count>3 items left</p>
-          <button class="btn delete">Clear Completed</button>
+          <button class="btn delete" data-clear>Clear Completed</button>
           <div class="settings desktop">
-            <button class="btn all">All</button>
-            <button class="btn active">Active</button>
-            <button class="btn completed">Completed</button>
+            <button class="btn all" data-all>All</button>
+            <button class="btn active" data-active>Active</button>
+            <button class="btn completed" data-completed>Completed</button>
           </div>
         </div>
       </div>
