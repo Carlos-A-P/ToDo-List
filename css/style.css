@@ -37,6 +37,10 @@ body {
 	background-color: var(--Very-Light-Gray);
 }
 
+*:hover {
+	transition: 0.3s;
+}
+
 .todo-wrapper {
 	max-width: 500px;
 	margin: auto;
@@ -106,7 +110,7 @@ label {
 	background: var(--Check-Background);
 }
 
-.new-task-creator button {
+.new-task-creator .btn {
 	/* position: absolute; */
 	/* z-index: 2; */
 	/* background: 0; */
@@ -216,10 +220,6 @@ label {
 	opacity: 0.4;
 }
 
-/* [type="checkbox"]:focus + .checkbox-wrap {
-	outline: 1px solid;
-} */
-
 .task label p {
 	position: absolute;
 }
@@ -255,6 +255,11 @@ button.delete-task {
 	cursor: pointer;
 	border: 0;
 	background-color: white;
+	visibility: hidden;
+}
+
+.task:hover button.delete-task {
+	visibility: visible;
 }
 
 /* mobile footer */
@@ -270,7 +275,7 @@ button.delete-task {
 	opacity: 0.7;
 }
 
-.btn.delete {
+.btn.clear {
 	border: 0;
 	background: 0;
 	cursor: pointer;
@@ -279,7 +284,7 @@ button.delete-task {
 	opacity: 0.7;
 }
 
-.btn.delete:hover {
+.btn.clear:hover {
 	color: var(--Very-Dark-Grayish-Blue);
 }
 
@@ -299,14 +304,40 @@ div.settings button {
 	color: var(--Dark-Grayish-Blue);
 	font-weight: 700;
 	opacity: 0.6;
+	position: relative;
 }
+
+div.settings button.selected {
+	color: var(--Bright-Blue);
+}
+
+/* div.settings button::after {
+	content: " ";
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: -0.1em;
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: center;
+	transition: transform 300ms ease-in-out;
+}
+
+div.settings button.selected::after {
+	transform: scaleX(1);
+	transform-origin: center;
+} */
 
 div.settings button:hover {
 	color: var(--Very-Dark-Grayish-Blue);
 	cursor: pointer;
 }
-
 /* /mobile footer */
+
+.task.dragging {
+	opacity: 0.5;
+}
 
 footer {
 	text-align: center;

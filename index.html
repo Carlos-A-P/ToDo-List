@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>CPWD | Todo app</title>
 </head>
 <body class="">`    
@@ -22,7 +23,7 @@
     <div class="todo-body">
       <div class="new-task-creator">
         <form action="" data-new-list-form>
-          <div class="button-wrap"><button class="btn create" aria-label="create a task"></button></div>
+          <div class="button-wrap"><div class="btn create" aria-label="create a task"></div></div>
           <input 
           type="text" 
           class="new-task" 
@@ -33,7 +34,7 @@
       </div>
       <!-- /new-task-creator -->    
       <div class="box-wrapper" >
-        <div class="tasks" data-tasks>
+        <div class="tasks container" data-tasks>
           <div class="task">
               <input type="checkbox" id="task-1">
               <div class="checkbox-wrap">
@@ -42,8 +43,7 @@
               <label for="task-1">
                   <p>Jog around the park 3x</p> 
               </label>
-              
-              <button class="delete-task" data-delete-task></button>
+              <button class="delete-task" onclick='deleteTask(this)'></button>
             </div>
           <!-- /task-1 -->
 
@@ -53,9 +53,9 @@
                 <span class="custom-checkbox"></span>
               </div>
               <label for="task-2">
-                <p>another task</p> 
+                <p>Take over the world</p> 
               </label>
-              <button class="delete-task" data-delete-task></button>
+              <button class="delete-task" onclick='deleteTask(this)'></button>
           </div>
           <!-- /task-2 -->
 
@@ -67,30 +67,20 @@
               <label for="task-3">
                 <p>Complete Todo App on Frontend Mentor</p> 
               </label>
-              <button class="delete-task" data-delete-task></button>
+              <button class="delete-task" onclick='deleteTask(this)'></button>
             </div>
           <!-- /task-3 -->          
         </div>
 
         <div class="todo-footer mobile">
           <p class="task-count" data-list-count>3 items left</p>
-          <button class="btn delete" data-clear>Clear Completed</button>
-        </div>
-
-        <div class="todo-footer desktop" style="display: none;">
-          <p class="task-count" data-list-count>3 items left</p>
-          <button class="btn delete" data-clear>Clear Completed</button>
-          <div class="settings desktop">
-            <button class="btn all" data-all>All</button>
-            <button class="btn active" data-active>Active</button>
-            <button class="btn completed" data-completed>Completed</button>
-          </div>
+          <button class="btn clear" id="clear_btn">Clear Completed</button>
         </div>
       </div>
-      <div class="settings mobile">
-        <button class="btn all">All</button>
-        <button class="btn active">Active</button>
-        <button class="btn completed">Completed</button>
+      <div class="settings mobile" id="settings">
+        <button class="btn all selected" id="all_btn">All</button>
+        <button class="btn active" id="active_btn">Active</button>
+        <button class="btn completed" id="completed_btn" >Completed</button>
       </div>
       <!-- /todo-body -->
     </div>

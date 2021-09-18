@@ -74,7 +74,7 @@ function addItem(name) {
   // add delete button
   let deleteTask = document.createElement('button')
   deleteTask.classList.add('delete-task')
-  deleteTask.setAttribute('data-delete-task', '')
+  deleteTask.setAttribute('onclick', 'deleteTask(this)')
   newTask.appendChild(deleteTask)
 
   // add the whole element to list
@@ -89,7 +89,7 @@ function addItem(name) {
     <label for="task-2">
       <p>another task</p> 
     </label>
-    <button class="delete-task" data-delete-task></button>
+    <button class="delete-task" onclick='deleteTask(this)'></button>
   </div> 
 */}
 
@@ -117,22 +117,128 @@ function countItems() {
   listCount.innerHTML = `${tasks.children.length} items left`
 }
 
-deleteButton.forEach(button => {
-  button.addEventListener('click', () => {
+// deleteTask(this)
+function deleteTask(button) {
     tasks.removeChild(button.parentElement)
     countItems()
-  })
-})
+    return button 
+}
 
-let clearTask = document.querySelectorAll('[data-clear]')
+const clearCompletedTasks = document.getElementById('clear_btn')
+const allTasks = document.getElementById('all_btn')
+const activeTasks = document.getElementById('active_btn')
+const completedTasks = document.getElementById('completed_btn')
+let checked = document.getElementsByClassName('checked')
 
-clearTask.forEach(clear_btn => {
-  clear_btn.addEventListener('click', () => {
-    let checked = document.getElementsByClassName('checked')
-    while(checked.length > 0){
-      tasks.removeChild(checked[0])
+tasks.addEventListener('change', () => {
+    if (completedTasks.classList.contains('selected')){
+      completedBtn()
+    } else if (activeTasks.classList.contains('selected')) {
+      activeBtn()
     }
-    
-    countItems()
-  })
+})  
+
+
+// adding the eventListeners for buttons which call to their functions depending on the button clicked
+clearCompletedTasks.addEventListener('click', () => {
+  while(checked.length > 0){
+    tasks.removeChild(checked[0])
+  }
+  countItems()
 })
+
+allTasks.addEventListener('click', () => {
+allBtn()  
+  setting(allTasks)
+})  
+
+activeTasks.addEventListener('click', () => {
+  allBtn()
+  activeBtn()
+  setting(activeTasks)
+})
+
+completedTasks.addEventListener('click', () => {
+  allBtn()
+  completedBtn()
+  setting(completedTasks)
+})
+
+function setting(x) {
+  listSettings = document.getElementById('settings')
+  for(let i = 0; i < listSettings.children.length; i++){
+    if(listSettings.children[i].classList.contains('selected')){
+      listSettings.children[i].classList.remove('selected')
+    }
+  }
+  x.classList.add('selected')
+}
+
+function allBtn() {
+    for(let j = 0; j < tasks.children.length; j++){
+      if(tasks.children[j].style.display === 'none'){
+        tasks.children[j].style.display = 'flex'
+      }
+    }
+}
+
+function activeBtn(){
+  for(let j = 0; j < tasks.children.length; j++){
+    if(tasks.children[j].classList.contains('checked')){
+      tasks.children[j].style.display = 'none'
+    }
+  }  
+}
+
+function completedBtn() {
+  for(let j = 0; j < tasks.children.length; j++){
+    if(!tasks.children[j].classList.contains('checked')){
+      tasks.children[j].style.display = 'none'
+    }
+  }  
+}
+
+// setting up the drag and drop
+const draggables = document.querySelectorAll('.task')
+const container = document.querySelector('.container')
+
+new Sortable(container, {
+  animation: 350
+})
+
+//this portion of my code didn't work and idk why
+// draggables.forEach(draggable => {
+//   draggable.addEventListener('dragstart', () => {
+//     draggable.classList.add('dragging')
+//   })
+
+//   draggable.addEventListener('dragend', () => {
+//     draggable.classList.remove('dragging')
+//   })
+// })
+
+//   container.addEventListener('dragover', e => {
+//     e.preventDefault()
+//     const afterElement = getDragAfterElement(container, e.clientY)
+//     const draggable = document.querySelector('.dragging')
+//     if (afterElement == null) {
+//       container.appendChild(draggable)
+//     } else {
+//       container.insertBefore(draggable, afterElement)
+//     }
+//   })
+
+// function getDragAfterElement(container, y) {
+//   const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+
+//   return draggableElements.reduce((closest, child) => {
+//     const box = child.getBoundingClientRect()
+//     console.log(box)
+//     const offset = y - box.top - box.height / 2
+//     if (offset < 0 && offset > closest.offset) {
+//       return { offset: offset, element: child }
+//     } else {
+//       return closest
+//     }
+//   }, { offset: Number.NEGATIVE_INFINITY }).element
+// }

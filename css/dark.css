@@ -21,7 +21,7 @@
 .dark-theme .box-wrapper,
 .dark-theme .settings.mobile,
 .dark-theme .new-task,
-.dark-theme .new-task-creator button,
+.dark-theme .new-task-creator .btn,
 .dark-theme span {
 	background-color: hsl(237, 14%, 26%);
 	box-shadow: none;
@@ -43,18 +43,32 @@
 }
 
 .dark-theme div.settings button:hover {
-	color: hsl(236, 33%, 92%);
+	color: hsl(240, 3%, 82%);
 }
 
-.dark-theme .btn.delete,
+.dark-theme .btn.clear,
 .dark-theme .task-count {
 	opacity: 1;
 }
 
-.dark-theme .btn.delete:hover {
+.dark-theme .btn.clear:hover {
 	color: hsl(236, 33%, 92%);
 	opacity: 1;
 }
+
+.dark-theme div.settings button.selected {
+	color: var(--Bright-Blue);
+}
+
+/* .dark-theme div.settings button.selected::after {
+	content: " ";
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: -0.1em;
+	height: 1px;
+	background: currentColor;
+} */
 
 @media (min-width: 650px) {
 	.dark-theme {
