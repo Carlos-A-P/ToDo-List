@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" integrity="sha512-zYXldzJsDrNKV+odAwFYiDXV2Cy37cwizT+NkuiPGsa9X1dOz04eHvUWVuxaJ299GvcJT31ug2zO4itXBjFx4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>CPWD | Todo app</title>
 </head>
-<body class="">`    
+<body class="">
   <main>
     <div class="todo-wrapper ">
       <div class="header">
@@ -35,45 +35,9 @@
       <!-- /new-task-creator -->    
       <div class="box-wrapper" >
         <div class="tasks container" data-tasks>
-          <div class="task">
-              <input type="checkbox" id="task-1">
-              <div class="checkbox-wrap">
-                <span class="custom-checkbox"></span>
-              </div>
-              <label for="task-1">
-                  <p>Jog around the park 3x</p> 
-              </label>
-              <button class="delete-task" onclick='deleteTask(this)'></button>
-            </div>
-          <!-- /task-1 -->
-
-          <div class="task">
-              <input type="checkbox" id="task-2">
-              <div class="checkbox-wrap">
-                <span class="custom-checkbox"></span>
-              </div>
-              <label for="task-2">
-                <p>Take over the world</p> 
-              </label>
-              <button class="delete-task" onclick='deleteTask(this)'></button>
-          </div>
-          <!-- /task-2 -->
-
-          <div class="task">
-              <input type="checkbox" id="task-3">
-              <div class="checkbox-wrap">
-                <span class="custom-checkbox"></span>
-              </div>
-              <label for="task-3">
-                <p>Complete Todo App on Frontend Mentor</p> 
-              </label>
-              <button class="delete-task" onclick='deleteTask(this)'></button>
-            </div>
-          <!-- /task-3 -->          
         </div>
-
         <div class="todo-footer mobile">
-          <p class="task-count" data-list-count>3 items left</p>
+          <p class="task-count" data-list-count></p>
           <button class="btn clear" id="clear_btn">Clear Completed</button>
         </div>
       </div>

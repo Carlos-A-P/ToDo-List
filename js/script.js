@@ -10,18 +10,16 @@ function toggleDark() {
   if (body.classList.contains('dark-theme')) {
     body.classList.remove('dark-theme')
     localStorage.setItem("theme", "")
-    // button.innerHTML = "Turn on dark mode"
   } else {
     body.classList.add('dark-theme')
     localStorage.setItem("theme", "dark-theme")
   }
 }
-
 if (localStorage.getItem("theme") === "dark-theme") {
   body.classList.add('dark-theme')
 }
-
 //----------------------------------------
+let elements
 
 newListForm.addEventListener('submit', e=> {
     
@@ -43,9 +41,9 @@ newListForm.addEventListener('submit', e=> {
     
 })
 
-let elements = []
 
 function addItem(name) {
+  // debugger
   // set up unique id for task
   let taskId = Date.now().toString()
   // create new div
@@ -55,6 +53,7 @@ function addItem(name) {
   let taskInput = document.createElement('input')
   taskInput.setAttribute('type', 'checkbox')
   taskInput.setAttribute('id', `task-${taskId}`)
+  // taskInput.setAttribute('checked', 'false')
   newTask.appendChild(taskInput)
   // add custom checkbox div
   let checkBox_Wrap = document.createElement('div')
@@ -95,22 +94,23 @@ function addItem(name) {
   </div> 
 */}
 
-// let obj =
-//   "task": {
-//     "id": taskid,
-//     "task-name": name,
-//     "checked": false,
-
-//   }
-
-elements.push(name)
-if (localStorage.getItem('todo-elements') == null){
-  localStorage.setItem('todo-elements', JSON.stringify(elements))
-} else {
-  localStorage.setItem('todo-elements', JSON.stringify(elements))
+save()
 }
-console.log(localStorage.getItem('todo-elements'), newTask)
+//remove after uploading============================================
+addItem('Jog around the park 3x')
+addItem('Take over the world')
+addItem('Complete Todo App on Frontend Mentor')
+//remove after uploading============================================
+window.onload = function() {
+  elements = JSON.parse(localStorage.getItem('todo-elements'))
+  tasks.innerHTML = elements
+  countItems()
+  checkItems()
+}
 
+function save() {
+    elements = tasks.innerHTML
+    localStorage.setItem('todo-elements', JSON.stringify(elements))
 }
 
 function checkItems() {
@@ -120,9 +120,12 @@ taskItems.forEach(item => {
   item.addEventListener('change', ()=> {
     if (item.checked) {
       item.parentElement.classList.add('checked')
+      item.setAttribute('checked', '')
     } else {
       item.parentElement.classList.remove('checked')
+      item.removeAttribute('checked', '')
     }
+    save()
   })
 })  
 }
@@ -139,6 +142,7 @@ function countItems() {
 function deleteTask(button) {
     tasks.removeChild(button.parentElement)
     countItems()
+    save()
     return button 
 }
 
@@ -163,6 +167,7 @@ clearCompletedTasks.addEventListener('click', () => {
     tasks.removeChild(checked[0])
   }
   countItems()
+  save()
 })
 
 allTasks.addEventListener('click', () => {
