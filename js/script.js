@@ -2,7 +2,7 @@ const body = document.querySelector('body')
 const newListForm = document.querySelector('[data-new-list-form]')
 const newListInput = document.querySelector('[data-new-list-input]')
 const tasks = document.querySelector('[data-tasks]')
-let deleteButton = document.querySelectorAll('[data-delete-task]')
+// let deleteButton = document.querySelectorAll('[data-delete-task]')
 
 //=--------------------------theme changer
 const button = document.querySelector('[data-theme-changer]');
@@ -20,9 +20,7 @@ if (localStorage.getItem("theme") === "dark-theme") {
 }
 //----------------------------------------
 let elements
-
 newListForm.addEventListener('submit', e=> {
-    
     //prevent from submitting or else our page will refresh
     e.preventDefault()
     //get name of element typed
@@ -34,13 +32,10 @@ newListForm.addEventListener('submit', e=> {
     addItem(listName)
     checkItems()
     countItems()
-
-    deleteButton = document.querySelectorAll('[data-delete-task]')
-    
-    return deleteButton
+    // deleteButton = document.querySelectorAll('[data-delete-task]')
+    // return deleteButton
     
 })
-
 
 function addItem(name) {
   // debugger
@@ -97,22 +92,25 @@ function addItem(name) {
 save()
 }
 //remove after uploading============================================
-addItem('Jog around the park 3x')
-addItem('Take over the world')
-addItem('Complete Todo App on Frontend Mentor')
+// addItem('Jog around the park 3x')
+// addItem('Take over the world')
+// addItem('Complete Todo App on Frontend Mentor')
 //remove after uploading============================================
+
+//load information onto screen
 window.onload = function() {
   elements = JSON.parse(localStorage.getItem('todo-elements'))
   tasks.innerHTML = elements
   countItems()
   checkItems()
 }
-
+// save changes
 function save() {
     elements = tasks.innerHTML
     localStorage.setItem('todo-elements', JSON.stringify(elements))
 }
-
+// see if item is checked
+let taskItems = document.querySelectorAll('[type=checkbox]')
 function checkItems() {
 taskItems = document.querySelectorAll('[type=checkbox]')
 taskItems.forEach(item => {
@@ -129,15 +127,12 @@ taskItems.forEach(item => {
   })
 })  
 }
-
-let taskItems = document.querySelectorAll('[type=checkbox]')
 checkItems()
-
+// update the count
 function countItems() {
   let listCount = document.querySelector('[data-list-count]')
   listCount.innerHTML = `${tasks.children.length} items left`
 }
-
 // deleteTask(this)
 function deleteTask(button) {
     tasks.removeChild(button.parentElement)
@@ -152,6 +147,7 @@ const activeTasks = document.getElementById('active_btn')
 const completedTasks = document.getElementById('completed_btn')
 let checked = document.getElementsByClassName('checked')
 
+// activate which list to see
 tasks.addEventListener('change', () => {
     if (completedTasks.classList.contains('selected')){
       completedBtn()
@@ -159,8 +155,6 @@ tasks.addEventListener('change', () => {
       activeBtn()
     }
 })  
-
-
 // adding the eventListeners for buttons which call to their functions depending on the button clicked
 clearCompletedTasks.addEventListener('click', () => {
   while(checked.length > 0){
@@ -169,24 +163,20 @@ clearCompletedTasks.addEventListener('click', () => {
   countItems()
   save()
 })
-
 allTasks.addEventListener('click', () => {
 allBtn()  
   setting(allTasks)
 })  
-
 activeTasks.addEventListener('click', () => {
   allBtn()
   activeBtn()
   setting(activeTasks)
 })
-
 completedTasks.addEventListener('click', () => {
   allBtn()
   completedBtn()
   setting(completedTasks)
 })
-
 function setting(x) {
   listSettings = document.getElementById('settings')
   for(let i = 0; i < listSettings.children.length; i++){
@@ -196,7 +186,6 @@ function setting(x) {
   }
   x.classList.add('selected')
 }
-
 function allBtn() {
     for(let j = 0; j < tasks.children.length; j++){
       if(tasks.children[j].style.display === 'none'){
@@ -204,7 +193,6 @@ function allBtn() {
       }
     }
 }
-
 function activeBtn(){
   for(let j = 0; j < tasks.children.length; j++){
     if(tasks.children[j].classList.contains('checked')){
@@ -212,7 +200,6 @@ function activeBtn(){
     }
   }  
 }
-
 function completedBtn() {
   for(let j = 0; j < tasks.children.length; j++){
     if(!tasks.children[j].classList.contains('checked')){
@@ -220,11 +207,10 @@ function completedBtn() {
     }
   }  
 }
-
 // setting up the drag and drop
 const draggables = document.querySelectorAll('.task')
 const container = document.querySelector('.container')
-
+//open source code used for the drag and drop
 new Sortable(container, {
   animation: 350
 })
