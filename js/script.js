@@ -43,6 +43,8 @@ newListForm.addEventListener('submit', e=> {
     
 })
 
+let elements = []
+
 function addItem(name) {
   // set up unique id for task
   let taskId = Date.now().toString()
@@ -92,6 +94,22 @@ function addItem(name) {
     <button class="delete-task" onclick='deleteTask(this)'></button>
   </div> 
 */}
+
+// let obj =
+//   "task": {
+//     "id": taskid,
+//     "task-name": name,
+//     "checked": false,
+
+//   }
+
+elements.push(name)
+if (localStorage.getItem('todo-elements') == null){
+  localStorage.setItem('todo-elements', JSON.stringify(elements))
+} else {
+  localStorage.setItem('todo-elements', JSON.stringify(elements))
+}
+console.log(localStorage.getItem('todo-elements'), newTask)
 
 }
 
