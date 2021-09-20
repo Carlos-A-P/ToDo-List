@@ -92,9 +92,9 @@ function addItem(name) {
 save()
 }
 //remove after uploading============================================
-// addItem('Jog around the park 3x')
-// addItem('Take over the world')
-// addItem('Complete Todo App on Frontend Mentor')
+addItem('Jog around the park 3x')
+addItem('Take over the world')
+addItem('Complete Todo App on Frontend Mentor')
 //remove after uploading============================================
 
 //load information onto screen
